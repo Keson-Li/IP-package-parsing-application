@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="openFileMenuItem" mnemonicParsing="false" onAction="#openFileAction" text="Open" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </MenuBar>
+      <ImageView fitHeight="50.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/shark.gif" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" centerShape="false" contentDisplay="TOP" layoutX="119.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1081.0" style="-fx-background-color: grey;" text="A Tool to analyse network packages (version: 1.0.0)" textAlignment="CENTER" textFill="#cde8c5" translateX="0.5" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <VBox layoutY="75.0" prefHeight="542.0" prefWidth="239.0" style="-fx-border-color: blue;">
+         <children>
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="239.0" style="-fx-background-color: grey;" text="Files" />
+            <HBox fx:id="openFileHBox" onMouseClicked="#openFilelabel" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="87.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/folder.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="75.0" prefWidth="230.0" text="Open..." textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="labelCurrentFile" onMouseClicked="#openCurrentFile" prefHeight="126.0" prefWidth="237.0" />
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="246.0" style="-fx-background-color: grey;" text="History Files" />
+            <VBox prefHeight="258.0" prefWidth="237.0">
+               <children>
+                  <Label fx:id="label1" onMouseClicked="#openFirstFile" prefHeight="34.0" prefWidth="237.0" />
+                  <Label fx:id="label2" onMouseClicked="#openSecondFile" prefHeight="34.0" prefWidth="237.0" />
+                  <Label fx:id="label3" onMouseClicked="#openThirdFile" prefHeight="34.0" prefWidth="237.0" />
+                  <Label fx:id="label4" onMouseClicked="#openForthFile" prefHeight="34.0" prefWidth="237.0" />
+                  <Label fx:id="label5" onMouseClicked="#openFifthFile" prefHeight="34.0" prefWidth="237.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <TabPane layoutX="239.0" layoutY="75.0" prefHeight="542.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Statistic">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="497.0" prefWidth="933.0">
+                     <children>
+                        <ScrollPane layoutY="-1.0" prefHeight="514.0" prefWidth="960.0">
+                           <content>
+                              <TableView fx:id="statisticTable" prefHeight="514.0" prefWidth="942.0">
+                                <columns>
+                                  <TableColumn fx:id="frame" prefWidth="75.0" text="Frame" />
+                                  <TableColumn fx:id="source_port" prefWidth="133.0" text="Src_IP:Port" />
+                                    <TableColumn fx:id="dest_port" prefWidth="85.0" text="Dest_IP:Port" />
+                                    <TableColumn minWidth="5.0" prefWidth="96.0" text="Column X" />
+                                    <TableColumn fx:id="arrivalTime" prefWidth="87.0" text="Arrival Time" />
+                                    <TableColumn fx:id="frameLength" prefWidth="85.0" text="Frame Length" />
+                                    <TableColumn fx:id="packetLength" prefWidth="82.0" text="Packet Length" />
+                                    <TableColumn fx:id="payloadLength" prefWidth="100.0" text="Payload Length" />
+                                    <TableColumn fx:id="sequence" prefWidth="117.0" text="Sequence" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Frame Length">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="frameLengthBarChart" layoutX="41.0" layoutY="20.0" prefHeight="441.0" prefWidth="860.0">
+                          <xAxis>
+                            <CategoryAxis label="Frame Length" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Count" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Arrival Time">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="arrivalTiemBarChart" layoutX="48.0" layoutY="42.0" prefHeight="402.0" prefWidth="855.0">
+                          <xAxis>
+                            <CategoryAxis label="Time (mm:ss:sss)" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Number of Packets" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Payload">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="payloadBarChart" layoutX="54.0" layoutY="14.0" prefHeight="426.0" prefWidth="802.0">
+                          <xAxis>
+                            <CategoryAxis label="Payload Sizes" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Count of Payload Sizes" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Protocal">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="protocalPieChart" layoutX="111.0" layoutY="50.0" prefHeight="382.0" prefWidth="613.0" title="Protocal distribution" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>
